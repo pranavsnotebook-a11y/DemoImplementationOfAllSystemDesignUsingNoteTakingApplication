@@ -1,23 +1,21 @@
-const notepad=document.getElementById("notepad")
-const ctx=notepad.getContext("2d")
+const notepad = document.getElementById("notepad")
+const ctx = notepad.getContext("2d")
 
-let startx=0;
-let starty=0;
-let endx=0;
-let endy=0;
+let isdrawing = false
 
-isdrawing = false
-document.addEventListener('mousedown',function(e){
-    console.log("down")
-     startx=e.clientX
-     starty= e.clientY
-     ctx.lineTo(startx,starty);
+document.addEventListener('mousedown', function(e) {
+    isdrawing = true
+    ctx.beginPath()
+    ctx.moveTo(e.clientX, e.clientY)
 })
-document.addEventListener('mouseup',function(e){
-    console.log("up")
 
-     endx=e.clientX
-     endy=e.clientY
-     ctx.lineTo(endx,endy);
-ctx.stroke();
+document.addEventListener('mousemove', function(e) {
+    if (isdrawing) {
+        ctx.lineTo(e.clientX, e.clientY)
+        ctx.stroke()
+    }
+})
+
+document.addEventListener('mouseup', function(e) {
+    isdrawing = false
 })
