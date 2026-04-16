@@ -19,3 +19,11 @@ document.addEventListener('mousemove', function(e) {
 document.addEventListener('mouseup', function(e) {
     isdrawing = false
 })
+function save(){
+    const canvas = document.getElementById("notepad");
+    const dataURL = canvas.toDataURL();
+    console.log(dataURL);
+// "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNby
+// blAAAADElEQVQImWNgoBMAAABpAAFEI8ARAAAAAElFTkSuQmCC"
+    
+}
