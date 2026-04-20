@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon websocketserver.js"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
