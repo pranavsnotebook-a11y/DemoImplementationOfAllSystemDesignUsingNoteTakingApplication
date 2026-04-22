@@ -1,6 +1,8 @@
 import {createServer} from 'http'
 import {createHash} from 'crypto'
+import { Buffer } from 'node:buffer';
 const PORT = 1337
+
 
 const server=createServer((request , response )=>{
     response.writeHead(200)
@@ -28,6 +30,19 @@ server.on('upgrade',(req , socket,head)=>{
 
         head: req.headers["sec-websocket-key"]
     });
+
+    socket.on('data', (chunk , index) => {
+            secondByte=chunk[1]
+            ismasked=secondByte>>7 & 1
+            length= secondByte&127
+            if (length === 126) {
+                offset += 2;
+            } else if (length === 127) {
+                offset += 8;
+            }
+            const mask = buffer.slice(offset, offset + 4);
+            offset += 4;
+})
     const acceptKey = createHash('sha1')
         .update(req.headers["sec-websocket-key"] + magicstring)
         .digest('base64');
