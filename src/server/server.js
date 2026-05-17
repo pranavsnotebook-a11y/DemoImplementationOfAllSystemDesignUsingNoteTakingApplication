@@ -1,30 +1,12 @@
 import { createServer } from 'http';
 import { createHash } from 'crypto';
 import { Buffer } from 'node:buffer';
-import fs from 'fs';
-import path from 'path'; // We'll need this to safely build file paths
 
 const PORT = 1337;
 
 const server = createServer((req, res) => {
-    if (req.method === 'GET') {
-        if (req.url === '/') {
-            fs.readFile('./public/index.html', (err, data) => {
-                if (err) {
-                    res.writeHead(500);
-                    res.end('Error loading index.html');
-                } else {
-                    res.writeHead(200, { 'Content-Type': 'text/html' });
-                    res.end(data);
-                }
-            });
-            return; // Stops execution here!
-        }
-    }
-    
     res.writeHead(200);
     res.end('hey there');
-
 }).listen(PORT, () => console.log('server listening to', PORT));
 
 // Keep track of all connected clients

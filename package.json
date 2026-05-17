@@ -4,6 +4,7 @@
     "dev": "nodemon websocketserver.js"
   },
   "dependencies": {
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "redis": "^5.12.1"
   }
 }
