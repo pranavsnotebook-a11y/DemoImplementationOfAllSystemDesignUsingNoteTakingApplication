@@ -1,4 +1,4 @@
-const socket= new WebSocket('ws://localhost:1337');
+const socket = new WebSocket(`ws://${location.host}`);
 socket.onopen=(event)=>console.log(`open1 ${event}`);
 socket.onmessage=(event)=>{
     console.log(`onmessage ${event.data}}`);
