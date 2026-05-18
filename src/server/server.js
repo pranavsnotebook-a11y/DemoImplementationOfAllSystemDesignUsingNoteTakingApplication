@@ -1,12 +1,12 @@
 import { createServer } from 'http';
 import { createHash } from 'crypto';
 import { Buffer } from 'node:buffer';
+import {handleHttpRequest} from './httpHandler.js';
 
 const PORT = 1337;
 
 const server = createServer((req, res) => {
-    res.writeHead(200);
-    res.end('hey there');
+    handleHttpRequest(req, res);
 }).listen(PORT, () => console.log('server listening to', PORT));
 
 // Keep track of all connected clients
